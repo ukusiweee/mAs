@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      АрТик-С - Производство премиальных интерьерных материалов из дерева в
+      Саранске
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-top-btn" id="scrollTopBtn">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Шапка -->
+    <header class="header" id="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <div class="logo-icon">
+              <img src="./img/AT-logo.png" class="logo-img" alt="АрТик-С" />
+            </div>
+            <div class="logo-text">
+              <h1>АрТик-С</h1>
+              <p>Премиальные материалы из натурального дерева</p>
+            </div>
+          </div>
+
+          <div class="header-contacts-mobile">
+            <a href="tel:+78001234567" class="mobile-phone">
+              <i class="fas fa-phone"></i>
+            </a>
+          </div>
+
+          <div class="header-contacts-desktop">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <p>Саранск</p>
+                <span>Собственное производство</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <p>8 (800) 123-45-67</p>
+                <span>Звоните прямо сейчас</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary callback-btn desktop-only">
+            <i class="fas fa-envelope"></i> Запросить прайс
+          </button>
+
+          <!-- Бургер-меню -->
+          <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="navbar" id="navbar">
+          <ul class="nav-menu">
+            <li>
+              <a href="#"><i class="fas fa-home"></i> Главная</a>
+            </li>
+            <li>
+              <a href="#advantages"><i class="fas fa-star"></i> Преимущества</a>
+            </li>
+            <li>
+              <a href="#products"><i class="fas fa-cube"></i> Продукция</a>
+            </li>
+            <li>
+              <a href="#materials"><i class="fas fa-pallet"></i> Материалы</a>
+            </li>
+            <li>
+              <a href="#about"
+                ><i class="fas fa-info-circle"></i> О производстве</a
+              >
+            </li>
+            <li>
+              <a href="#portfolio"><i class="fas fa-images"></i> Портфолио</a>
+            </li>
+            <li>
+              <a href="#contact"
+                ><i class="fas fa-address-book"></i> Контакты</a
+              >
+            </li>
+          </ul>
+
+          <!-- Контакты в мобильном меню -->
+          <div class="mobile-menu-contacts">
+            <div class="mobile-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <p>Саранск</p>
+                <span>Собственное производство</span>
+              </div>
+            </div>
+            <div class="mobile-contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <a href="tel:+78001234567">8 (800) 123-45-67</a>
+                <span>Звоните прямо сейчас!</span>
+              </div>
+            </div>
+            <div class="mobile-contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <p>Пн-Пт: 8:00-17:00</p>
+                <span>Сб: 9:00-14:00</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block mobile-callback">
+              <i class="fas fa-envelope"></i> Запросить прайс
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Производство премиальных интерьерных материалов из натурального
+            дерева в Саранске
+          </h1>
+          <p class="hero-subtitle">
+            Цельно-ламельные мебельные щиты из дуба и ясеня для элитной отделки
+            помещений
+          </p>
+          <div class="hero-buttons">
+            <a href="#catalog" class="btn btn-large btn-primary">
+              <i class="fas fa-download"></i> Скачать каталог
+            </a>
+            <a href="#contact" class="btn btn-large btn-outline">
+              <i class="fas fa-calculator"></i> Рассчитать стоимость
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="/img/back.jpeg"
+            alt="Мебельный щит из натурального дерева"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <h2 class="section-title">Наши преимущества</h2>
+
+        <div class="advantages-grid">
+          <div class="advantage-card">
+            <div class="advantage-icon">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <h3>Уникальные технологии</h3>
+            <p>
+              Прочность и устойчивость готового продукта к деформации при
+              изменении влажности и температуры в помещении
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <div class="advantage-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Безопасность</h3>
+            <p>
+              Применяемые материалы соответствуют мировым требованиям и
+              стандартам качества. Экологически чистые компоненты
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <div class="advantage-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+            <h3>Собственное производство</h3>
+            <p>
+              Прямые поставки по привлекательным ценам без посредников. Контроль
+              качества на каждом этапе
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <div class="advantage-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Доверие покупателей</h3>
+            <p>
+              К нам возвращаются снова и рекомендуют партнерам и друзьям. Более
+              200 постоянных клиентов
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Продукция -->
+    <section class="products" id="products">
+      <div class="container">
+        <h2 class="section-title">Наша продукция</h2>
+        <p class="section-subtitle">
+          Цельно-ламельные мебельные щиты из натурального дерева
+        </p>
+
+        <div class="product-description">
+          <div class="product-text">
+            <p>
+              Предлагаем вашему вниманию премиальные интерьерные материалы
+              (цельно-ламельные мебельные щиты) из натурального дерева (дуб,
+              ясень), изготовленные на профессиональном оборудовании.
+            </p>
+            <p>
+              Мебельный щит представляет собой склеенные между собой фанеру и
+              ламель из натуральной древесины в листовой материал
+              "полуфабрикат", который применяется в производстве:
+            </p>
+
+            <ul class="product-uses">
+              <li>
+                <i class="fas fa-check"></i> Стеновых панелей для отделки
+                помещений
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Элементов лестниц (ступеней,
+                порогов)
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Столешниц для обеденных и
+                письменных столов
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Паркетной доски и напольных
+                покрытий
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Мебельных фасадов и элементов
+              </li>
+            </ul>
+          </div>
+
+          <div class="product-image">
+            <img
+              src="/img/bl4.jpg"
+              alt="Мебельный щит из дуба"
+            />
+          </div>
+        </div>
+
+        <div class="benefits">
+          <h3>Преимущества мебельного щита перед цельным массивом</h3>
+          <div class="benefits-grid">
+            <div class="benefit">
+              <i class="fas fa-check-circle"></i>
+              <p>Не коробится и не трескается</p>
+            </div>
+            <div class="benefit">
+              <i class="fas fa-check-circle"></i>
+              <p>
+                Гарантированная стабильность при перепадах температуры и
+                влажности
+              </p>
+            </div>
+            <div class="benefit">
+              <i class="fas fa-check-circle"></i>
+              <p>
+                Экономия без потери качества - преимущества цельного массива по
+                выгодной цене
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Технические характеристики -->
+    <section class="specs" id="materials">
+      <div class="container">
+        <h2 class="section-title">Технические характеристики</h2>
+
+        <div class="specs-content">
+          <div class="specs-card">
+            <h3><i class="fas fa-tree"></i> Используемые материалы</h3>
+            <ul class="specs-list">
+              <li><strong>Породы дерева:</strong> дуб, ясень</li>
+              <li>
+                <strong>Ламель:</strong> уральская, толщина 3-4 мм, длина до 3 м
+              </li>
+              <li>
+                <strong>Клей:</strong> высокопрочный экологически безопасный
+                импортного производства
+              </li>
+              <li><strong>Влажность:</strong> 6% - 8%</li>
+              <li>
+                <strong>Готовность:</strong> к финишному покрытию лаком, воском,
+                маслом
+              </li>
+            </ul>
+          </div>
+
+          <div class="specs-card">
+            <h3><i class="fas fa-ruler-combined"></i> Диапазон размеров</h3>
+            <ul class="specs-list">
+              <li><strong>Толщина:</strong> от 12 мм до 40 мм</li>
+              <li><strong>Ширина:</strong> от 100 мм до 1000 мм</li>
+              <li><strong>Длина:</strong> от 1000 мм до 3000 мм</li>
+              <li>
+                <strong>Цветовая гамма:</strong> натуральные цвета древесины
+                (возможно покрытие маслом)
+              </li>
+            </ul>
+          </div>
+
+          <div class="specs-card">
+            <h3><i class="fas fa-award"></i> Качество продукции</h3>
+            <ul class="specs-list">
+              <li>Используется только отборное сырье</li>
+              <li>Безупречное качество склейки</li>
+              <li>Идеальная шлифовка поверхности</li>
+              <li>Контроль качества на всех этапах производства</li>
+              <li>Соответствие ГОСТ и международным стандартам</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Образцы нашей продукции</h2>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img
+                src="/img/bl1.jpg"
+                alt="Мебельный щит из дуба"
+              />
+              <div class="gallery-overlay">
+                <a href="#" class="gallery-btn">Увеличить</a>
+              </div>
+            </div>
+            <p class="gallery-caption">Дуб натуральный</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img
+                src="/img/bl2.jpg"
+                alt="Мебельный щит из ясеня"
+              />
+              <div class="gallery-overlay">
+                <a href="#" class="gallery-btn">Увеличить</a>
+              </div>
+            </div>
+            <p class="gallery-caption">Ясень светлый</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img
+                src="/img/bl3.jpg"
+                alt="Мебельный щит темный"
+              />
+              <div class="gallery-overlay">
+                <a href="#" class="gallery-btn">Увеличить</a>
+              </div>
+            </div>
+            <p class="gallery-caption">Дуб мореный</p>
+          </div>
+
+          <div class="gallery-item portfolio-link">
+            <div class="portfolio-card">
+              <i class="fas fa-images"></i>
+              <h3>Смотреть другие работы</h3>
+              <a href="#" class="btn btn-secondary">Перейти в портфолио</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">ООО "АрТик-С"</h2>
+
+        <div class="about-content">
+          <div class="about-text">
+            <h3>
+              Производство премиальных интерьерных материалов из натурального
+              дерева
+            </h3>
+            <p>
+              Мы специализируемся на производстве высококачественных мебельных
+              щитов из натурального дерева в Саранске. Наше производство
+              оснащено современным оборудованием, что позволяет нам создавать
+              продукцию премиум-класса.
+            </p>
+            <p>
+              С 2022 года мы поставляем на рынок России интерьерные материалы,
+              которые сочетают в себе натуральную красоту дерева с
+              технологическими преимуществами современных материалов.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat">
+                <h4>3+</h4>
+                <p>года на рынке</p>
+              </div>
+              <div class="stat">
+                <h4>200+</h4>
+                <p>постоянных клиентов</p>
+              </div>
+              <div class="stat">
+                <h4>5000+</h4>
+                <p>м² произведено</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img
+              src="/img/bl5.jpg"
+              alt="Производство мебельных щитов"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h2 class="section-title">Контакты</h2>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <h4>Производство</h4>
+                  <p>г. Саранск</p>
+                  <p>Собственное производство</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <h4>Телефоны</h4>
+                  <p>8 (800) 123-45-67 (бесплатный по РФ)</p>
+                  <p>+7 (834) 123-45-67 (Саранск)</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <h4>Email</h4>
+                  <p>info@victoria-wood.ru</p>
+                  <p>sales@victoria-wood.ru</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <h4>Режим работы</h4>
+                  <p>Пн-Пт: 8:00-17:00</p>
+                  <p>Сб: 9:00-14:00</p>
+                  <p>Вс: выходной</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <h3>Запросить коммерческое предложение</h3>
+            <p>Мы подготовим расчет стоимости в течение 2 часов</p>
+
+            <form id="requestForm">
+              <div class="form-group">
+                <input type="text" placeholder="Ваше имя" required />
+              </div>
+
+              <div class="form-group">
+                <input type="tel" placeholder="Ваш телефон" required />
+              </div>
+
+              <div class="form-group">
+                <input type="email" placeholder="Ваш email" required />
+              </div>
+
+              <div class="form-group">
+                <textarea
+                  placeholder="Ваш вопрос или комментарий"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-paper-plane"></i> Отправить запрос
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <img
+                src="./img/AT-white-logo.png"
+                class="logo-img"
+                alt="АрТик-С"
+              />
+            </div>
+            <div class="footer-logo-text">
+              <h3>ООО "АрТик-С"</h3>
+              <p>
+                Производство премиальных интерьерных материалов из натурального
+                дерева
+              </p>
+            </div>
+          </div>
+
+          <div class="footer-copyright">
+            <p>&copy; 2022-2025 ООО "АрТик-С". Все права защищены.</p>
+            <p>Производство в Саранске. Доставка по всей России.</p>
+          </div>
+
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="scripts/script.js"></script>
+  </body>
+</html>
