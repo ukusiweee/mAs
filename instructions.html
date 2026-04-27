@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      АрТик-С - Инструкция по монтажу и транспортировке стеновых панелей
+    </title>
+    <meta
+      name="description"
+      content="Подготовка помещения, транспортировка, хранение и монтаж стеновых панелей из натуральной древесины и гипсокартона от производителя АрТик-С."
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind конфигурация -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5A2B",
+              "primary-dark": "#5C3A1B",
+              "primary-light": "#D4A574",
+            },
+            fontFamily: {
+              playfair: ["Playfair Display", "serif"],
+              roboto: ["Roboto", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .nav-link.active {
+        color: #8b5a2b;
+        border-bottom: 2px solid #8b5a2b;
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 0;
+          flex-direction: column;
+          background-color: white;
+          width: 80%;
+          height: 100%;
+          text-align: left;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+          z-index: 1000;
+          padding: 80px 20px 40px;
+          overflow-y: auto;
+        }
+        .nav-menu.active {
+          left: 0;
+        }
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+        .overlay.active {
+          display: block;
+        }
+      }
+      /* Кастомные стили для иконок-кружков */
+      .step-icon {
+        transition: all 0.3s ease;
+      }
+      .step-card:hover .step-icon {
+        background-color: #8b5a2b;
+        color: white;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-roboto text-gray-700">
+    <!-- Overlay для мобильного меню -->
+    <div
+      class="overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+      id="overlay"
+    ></div>
+
+    <!-- Кнопка "Наверх" -->
+    <button
+      class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-300 z-50 opacity-0 invisible"
+      id="scrollTopBtn"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Шапка (аналогичная главной) -->
+    <header class="bg-white shadow-md sticky top-0 z-50" id="header">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <!-- Логотип -->
+          <a href="index.html" class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center"
+            >
+              <img
+                src="./img/AT-logo.png"
+                class="w-10 h-10 object-contain"
+                alt="АрТик-С"
+              />
+            </div>
+            <div class="hidden md:block">
+              <h1 class="text-xl font-bold text-primary font-playfair">
+                АрТик-С
+              </h1>
+              <p class="text-xs text-gray-600 max-w-md">
+                Интерьерные отделочные материалы из натуральной древесины (её
+                компонентов) и гипсокартона
+              </p>
+            </div>
+          </a>
+
+          <!-- Десктопные контакты -->
+          <div class="hidden lg:flex items-center gap-6">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+              <div>
+                <p class="font-semibold">Мордовия</p>
+                <span class="text-sm text-gray-500"
+                  >Собственное производство</span
+                >
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-phone text-primary text-xl"></i>
+              <div>
+                <p class="font-semibold">8 (917) 696-13-00</p>
+                <p class="font-semibold">8 (927) 176-22-32</p>
+                <span class="text-sm text-gray-500">Звоните прямо сейчас</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Бургер-меню -->
+          <button
+            class="menu-toggle lg:hidden flex flex-col justify-center items-center w-8 h-8 relative z-50"
+            id="menuToggle"
+          >
+            <span
+              class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-800 transition-all duration-300"
+            ></span>
+          </button>
+        </div>
+
+        <!-- Навигация (десктопная) -->
+        <nav class="hidden lg:block mt-4 border-t border-gray-100 pt-4">
+          <ul class="flex justify-start gap-8">
+            <li>
+              <a
+                href="index.html"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Главная</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#advantages"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Преимущества</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#products"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Продукция</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#materials"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Материалы</a
+              >
+            </li>
+            <li>
+              <a
+                href="instructions.html"
+                class="nav-link text-primary border-b-2 border-primary font-medium"
+                >Инструкция</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#portfolio"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Портфолио</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#contact"
+                class="nav-link text-gray-700 hover:text-primary transition-colors font-medium"
+                >Контакты</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Мобильное меню -->
+        <div
+          class="nav-menu fixed top-0 left-[-100%] w-4/5 h-full bg-white z-40 transition-all duration-300 p-6 pt-20 shadow-xl overflow-y-auto lg:hidden"
+          id="navbar"
+        >
+          <ul class="flex flex-col gap-4">
+            <li>
+              <a
+                href="index.html"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Главная</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#advantages"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Преимущества</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#products"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Продукция</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#materials"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Материалы</a
+              >
+            </li>
+            <li>
+              <a
+                href="montage.html"
+                class="nav-link block py-2 text-primary font-semibold"
+                >Монтаж</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#portfolio"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Портфолио</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#contact"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Контакты</a
+              >
+            </li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-gray-200 space-y-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+              <div>
+                <p class="font-semibold">Мордовия</p>
+                <span class="text-sm text-gray-500"
+                  >Собственное производство</span
+                >
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-phone text-primary text-xl"></i>
+              <div>
+                <a href="tel:+79176961300" class="block font-semibold"
+                  >8 (917) 696-13-00</a
+                ><a href="tel:+79271762232" class="block font-semibold"
+                  >8 (927) 176-22-32</a
+                ><span class="text-sm text-gray-500"
+                  >Звоните прямо сейчас!</span
+                >
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-clock text-primary text-xl"></i>
+              <div>
+                <p class="font-semibold">Пн-Пт: 8:00-17:00</p>
+                <span class="text-sm text-gray-500">Сб: 9:00-14:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero-секция страницы монтажа -->
+    <section
+      class="relative bg-gradient-to-r from-primary/10 to-primary/5 py-16 md:py-24"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-gray-800 font-playfair mb-4"
+        >
+          Инструкция по монтажу и транспортировке
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Правильная подготовка, бережная транспортировка и грамотный монтаж —
+          залог долговечности и сохранения эстетики ваших стеновых панелей.
+        </p>
+      </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="py-12 md:py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <!-- Подготовка помещения -->
+        <div class="mb-16 bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-primary text-white px-6 py-4">
+            <h2 class="text-2xl font-semibold flex items-center gap-3">
+              <i class="fas fa-tools"></i> Подготовка помещения к финишной
+              отделке
+            </h2>
+          </div>
+          <div class="p-6 space-y-4 text-gray-700">
+            <p>
+              Перед монтажом финишного материала (декоративный гипсокартон,
+              стекломагниевый лист, ГВЛВ и пр.) требуется предварительно
+              закончить все
+              <strong class="text-primary">мокрые процессы</strong> в помещении
+              (такие как стяжка полов, шпатлевка и грунтовка стен и пр.).
+            </p>
+            <div
+              class="bg-yellow-50 border-l-4 border-primary p-4 rounded-r-lg"
+            >
+              <p class="font-semibold text-primary">
+                <i class="fas fa-exclamation-triangle mr-2"></i> Важно!
+              </p>
+              <p>
+                Монтаж влагостойкого чернового гипсокартона требует внимания:
+                как и любой материал под длительным воздействием воды, он может
+                впитать влагу, затем разбухнуть и деформироваться вплоть до
+                разрушения.
+              </p>
+            </div>
+            <p>
+              Стоит принять во внимание, что гипсокартонные листы не выдерживают
+              большой нагрузки и ударов, поэтому
+              <strong class="text-primary"
+                >использовать их как основу каркаса запрещается</strong
+              >
+              (то есть, закручивать к ним тяжелые предметы).
+            </p>
+            <p>
+              При использовании влагостойкого гипсокартона нужно монтировать его
+              <strong class="text-primary">не ранее 2 недель</strong> после
+              полного высыхания грунтовок, шпатлевок, красок, стяжек пола. В
+              непроветриваемых помещениях необходимо устанавливать
+              принудительную вентиляцию.
+            </p>
+          </div>
+        </div>
+
+        <!-- Транспортировка -->
+        <div class="mb-16 bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-primary text-white px-6 py-4">
+            <h2 class="text-2xl font-semibold flex items-center gap-3">
+              <i class="fas fa-truck"></i> Транспортировка стеновых панелей
+            </h2>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-primary-dark">
+                  Правила перевозки:
+                </h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-primary mt-1"></i>
+                    <span
+                      >Перевозить
+                      <strong class="font-semibold">только на паллетах</strong>
+                      на горизонтальной поверхности.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-ban text-red-500 mt-1"></i>
+                    <span
+                      ><strong class="font-semibold"
+                        >Запрещается стягивание листов</strong
+                      >
+                      ремнями — это может повредить кромки и поверхность.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-arrows-alt text-primary mt-1"></i>
+                    <span
+                      ><strong class="font-semibold"
+                        >Носить только в вертикальном положении</strong
+                      >
+                      при переносе вручную.</span
+                    >
+                  </li>
+                </ul>
+                <div class="bg-gray-100 p-4 rounded-lg mt-4">
+                  <p class="font-semibold">
+                    <i class="fas fa-grip-lines-vertical text-primary mr-2"></i>
+                    Перенос отдельных панелей:
+                  </p>
+                  <p class="text-sm mt-1">
+                    Осуществляется исключительно в
+                    <strong>вертикальном положении</strong> (как показано на
+                    схеме). Категорически запрещен перенос в горизонтальном
+                    положении без использования паллета.
+                  </p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-primary-dark">
+                  Погрузка и выгрузка:
+                </h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-hand-paper text-primary mt-1"></i>
+                    <span
+                      >Поднимать листы
+                      <strong class="font-semibold">только вручную</strong>,
+                      чтобы не поцарапать поверхность.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-ban text-red-500 mt-1"></i>
+                    <span
+                      ><strong class="font-semibold"
+                        >Запрещается тащить листы</strong
+                      >
+                      — посторонние частицы между листами могут повредить
+                      декоративный слой.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-cubes text-primary mt-1"></i>
+                    <span
+                      >Снятие панели с паллета: поднять с обеих сторон →
+                      установить на ребро жесткости → поднять вертикально.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Хранение (добавлено из логики) -->
+        <div class="mb-16 bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-primary text-white px-6 py-4">
+            <h2 class="text-2xl font-semibold flex items-center gap-3">
+              <i class="fas fa-warehouse"></i> Правила хранения на объекте
+            </h2>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div class="text-center p-4 border rounded-xl">
+              <i class="fas fa-bed text-4xl text-primary mb-3"></i>
+              <p class="font-semibold">✅ Только горизонтальное положение</p>
+              <p class="text-sm mt-2">
+                Хранение листов
+                <strong>только в горизонтальном положении</strong> на ровной
+                поверхности. При хранении вертикально возможна деформация
+                материала.
+              </p>
+            </div>
+            <div class="text-center p-4 border rounded-xl">
+              <i class="fas fa-building text-4xl text-primary mb-3"></i>
+              <p class="font-semibold">✅ Закрытое помещение</p>
+              <p class="text-sm mt-2">
+                Хранение осуществляется в <strong>закрытых помещениях</strong>,
+                защищенных от сырости и прямых солнечных лучей, в оригинальной
+                упаковке или уложенными друг на друга.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Рекомендации по монтажу -->
+        <div class="mb-16 bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="bg-primary text-white px-6 py-4">
+            <h2 class="text-2xl font-semibold flex items-center gap-3">
+              <i class="fas fa-hard-hat"></i> Рекомендации по монтажу
+            </h2>
+          </div>
+          <div class="p-6">
+            <div class="bg-gray-100 p-5 rounded-xl mb-6">
+              <h3
+                class="text-xl font-semibold text-primary-dark mb-3 flex items-center gap-2"
+              >
+                <i class="fas fa-cut"></i> Вырезание отверстий в панелях
+              </h3>
+              <div
+                class="bg-yellow-50 border-l-4 border-primary p-4 rounded-r-lg mb-4"
+              >
+                <p class="font-semibold text-primary">
+                  <i class="fas fa-draw-polygon mr-2"></i> Важное правило!
+                </p>
+                <p>
+                  При несоблюдении технологии резки в месте вырезания отверстия
+                  может возникнуть <strong>микротрещина</strong>, которая со
+                  временем может распространиться далее по листу.
+                </p>
+              </div>
+              <p>
+                <strong class="text-primary">Обязательное засверливание</strong>
+                перед началом резки! Это предотвращает появление сколов и
+                трещин.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl border border-primary/20">
+              <h3
+                class="text-xl font-semibold text-primary-dark mb-3 flex items-center gap-2"
+              >
+                <i class="fas fa-th"></i> Монтаж полноформатными листами
+              </h3>
+              <p>
+                Рекомендуется монтировать панели полноформатными листами, что
+                обеспечивает наилучший внешний вид и структурную целостность
+                поверхности. Все работы выполняйте с использованием
+                соответствующих крепежных элементов и инструментов.
+              </p>
+              <div class="mt-4 text-center text-primary-dark font-semibold">
+                <i class="fas fa-info-circle mr-2"></i> БУДЬТЕ ВНИМАТЕЛЬНЫ ПРИ
+                МОНТАЖЕ И ТРАНСПОРТИРОВКЕ МАТЕРИАЛА!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Дополнительный блок-памятка -->
+        <div
+          class="bg-primary/5 rounded-2xl p-6 text-center border-2 border-dashed border-primary/30"
+        >
+          <i class="fas fa-clipboard-list text-3xl text-primary mb-3"></i>
+          <h3 class="text-xl font-bold text-primary-dark mb-2">
+            Краткий чек-лист перед началом работ
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4 text-left mt-4">
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Все мокрые
+              процессы завершены
+            </div>
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Помещение
+              проветривается (или есть вентиляция)
+            </div>
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Панели
+              хранятся горизонтально в сухом месте
+            </div>
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Листы
+              переносятся только вертикально
+            </div>
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Для резки
+              используется предварительное засверливание
+            </div>
+            <div>
+              <i class="fas fa-check-circle text-green-600 mr-2"></i> Каркас
+              подготовлен, нагрузка распределена корректно
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Футер (как на главной) -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 bg-primary rounded-full flex items-center justify-center"
+            >
+              <img
+                src="./img/AT-white-logo.png"
+                class="w-10 h-10 object-contain"
+                alt="АрТик-С"
+              />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold font-playfair">ООО "АрТик-С"</h3>
+              <p class="text-sm text-gray-400 max-w-md">
+                Производство эконом и премиум класса интерьерных отделочных
+                материалов из натуральной древесины (её компонентов) и
+                гипсокартона
+              </p>
+            </div>
+          </div>
+          <div class="text-center text-gray-400 text-sm">
+            <p>&copy; 2026 ООО "АрТик-С". Все права защищены.</p>
+            <p>Доставка по всей России.</p>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href="#"
+              class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+              ><i class="fab fa-vk"></i
+            ></a>
+            <a
+              href="#"
+              class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+              ><i class="fab fa-telegram"></i
+            ></a>
+            <a
+              href="#"
+              class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Мобильное меню
+      const menuToggle = document.getElementById("menuToggle");
+      const navbar = document.getElementById("navbar");
+      const overlay = document.getElementById("overlay");
+      const scrollBtn = document.getElementById("scrollTopBtn");
+
+      function closeMenu() {
+        navbar.classList.remove("active");
+        menuToggle.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+      function openMenu() {
+        navbar.classList.add("active");
+        menuToggle.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          navbar.classList.contains("active") ? closeMenu() : openMenu();
+        });
+      }
+      overlay.addEventListener("click", closeMenu);
+      document
+        .querySelectorAll(".nav-link")
+        .forEach((link) => link.addEventListener("click", closeMenu));
+
+      // Скролл топ
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+          scrollBtn.classList.remove("opacity-0", "invisible");
+          scrollBtn.classList.add("opacity-100", "visible");
+        } else {
+          scrollBtn.classList.remove("opacity-100", "visible");
+          scrollBtn.classList.add("opacity-0", "invisible");
+        }
+      });
+      scrollBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+    </script>
+  </body>
+</html>
