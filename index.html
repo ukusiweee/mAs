@@ -7,235 +7,449 @@
       АрТик-С - Производство эконом и премиум класса интерьерных отделочных
       материалов из натуральной древесины и ее компонентов
     </title>
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind конфигурация (кастомные цвета, шрифты и т.д.) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5A2B",
+              "primary-dark": "#5C3A1B",
+              "primary-light": "#D4A574",
+              secondary: "#A0522D",
+            },
+            fontFamily: {
+              playfair: ["Playfair Display", "serif"],
+              roboto: ["Roboto", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 0.5s ease-in-out",
+              "slide-up": "slideUp 0.3s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Кастомные стили, которые Tailwind не покрывает */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .gallery-image:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .nav-menu a.active {
+        color: #8b5a2b;
+        border-bottom-color: #8b5a2b;
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 0;
+          flex-direction: column;
+          background-color: white;
+          width: 80%;
+          height: 100%;
+          text-align: left;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+          z-index: 1000;
+          padding: 80px 20px 40px;
+          overflow-y: auto;
+        }
+        .nav-menu.active {
+          left: 0;
+        }
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+        .overlay.active {
+          display: block;
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body class="bg-white font-roboto text-gray-700">
+    <!-- Overlay для мобильного меню -->
+    <div
+      class="overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+      id="overlay"
+    ></div>
+
     <!-- Кнопка "Наверх" -->
-    <button class="scroll-top-btn" id="scrollTopBtn">
+    <button
+      class="scroll-top-btn fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-300 z-50 opacity-0 invisible"
+      id="scrollTopBtn"
+    >
       <i class="fas fa-chevron-up"></i>
     </button>
 
     <!-- Шапка -->
-    <header class="header" id="header">
-      <div class="container">
-        <div class="header-top">
-          <div class="logo">
-            <div class="logo-icon">
-              <img src="./img/AT-logo.png" class="logo-img" alt="АрТик-С" />
+    <header
+      class="header bg-white shadow-md sticky top-0 z-50 transition-shadow duration-300"
+      id="header"
+    >
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <!-- Логотип -->
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center">
+              <img
+                src="./img/AT-logo.png"
+                class="w-10 h-10 object-contain"
+                alt="АрТик-С"
+              />
             </div>
-            <div class="logo-text">
-              <h1>АрТик-С</h1>
-              <p>
+            <div class="hidden md:block">
+              <h1 class="text-xl font-bold text-primary font-playfair">
+                АрТик-С
+              </h1>
+              <p class="text-xs text-gray-600 max-w-md">
                 Интерьерные отделочные материалы из натуральной древесины (её
                 компонентов) и гипсокартона
               </p>
             </div>
           </div>
 
-          <!-- <div class="header-contacts-mobile">
-            <a href="tel:+78001234567" class="mobile-phone">
-              <i class="fas fa-phone"></i>
-            </a>
-          </div> -->
-
-          <div class="header-contacts-desktop">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
+          <!-- Десктопные контакты -->
+          <div class="hidden lg:flex items-center gap-6">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-primary text-xl"></i>
               <div>
-                <p>Мордовия</p>
-                <span>Собственное производство</span>
+                <p class="font-semibold">Мордовия</p>
+                <span class="text-sm text-gray-500"
+                  >Собственное производство</span
+                >
               </div>
             </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-phone text-primary text-xl"></i>
               <div>
-                <p>8 (917) 696-13-00</p>
-                <p>8 (927) 176-22-32</p>
-                <span>Звоните прямо сейчас</span>
+                <p class="font-semibold">8 (917) 696-13-00</p>
+                <p class="font-semibold">8 (927) 176-22-32</p>
+                <span class="text-sm text-gray-500">Звоните прямо сейчас</span>
               </div>
             </div>
           </div>
 
-          <!-- <button class="btn btn-primary callback-btn desktop-only">
-            <i class="fas fa-envelope"></i> Запросить прайс
-          </button> -->
-
-          <!-- Бургер-меню -->
-          <button class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+          <!-- Бургер-меню (мобильное) -->
+          <button
+            class="menu-toggle lg:hidden flex flex-col justify-center items-center w-8 h-8 relative z-50"
+            id="menuToggle"
+          >
+            <span
+              class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-800 transition-all duration-300"
+            ></span>
           </button>
         </div>
 
-        <nav class="navbar" id="navbar">
-          <ul class="nav-menu">
+        <!-- Навигация (десктопная) -->
+        <nav class="hidden lg:block mt-4 border-t border-gray-100 pt-4">
+          <ul class="flex justify-start gap-8">
             <li>
-              <a href="#"><i class="fas fa-home"></i> Главная</a>
-            </li>
-            <li>
-              <a href="#advantages"><i class="fas fa-star"></i> Преимущества</a>
-            </li>
-            <li>
-              <a href="#products"><i class="fas fa-cube"></i> Продукция</a>
-            </li>
-            <li>
-              <a href="#materials"><i class="fas fa-pallet"></i> Материалы</a>
-            </li>
-            <li>
-              <a href="#about"
-                ><i class="fas fa-info-circle"></i> О производстве</a
+              <a
+                href="#"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Главная</a
               >
             </li>
             <li>
-              <a href="#portfolio"><i class="fas fa-images"></i> Портфолио</a>
+              <a
+                href="#advantages"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Преимущества</a
+              >
             </li>
             <li>
-              <a href="#contact"
-                ><i class="fas fa-address-book"></i> Контакты</a
+              <a
+                href="#products"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Продукция</a
+              >
+            </li>
+            <li>
+              <a
+                href="#materials"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Материалы</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >О производстве</a
+              >
+            </li>
+            <li>
+              <a
+                href="#portfolio"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Портфолио</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="nav-link text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                >Контакты</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Мобильное меню -->
+        <div
+          class="nav-menu fixed top-0 left-[-100%] w-4/5 h-full bg-white z-40 transition-all duration-300 p-6 pt-20 shadow-xl overflow-y-auto lg:hidden"
+          id="navbar"
+        >
+          <ul class="flex flex-col gap-4">
+            <li>
+              <a
+                href="#"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Главная</a
+              >
+            </li>
+            <li>
+              <a
+                href="#advantages"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Преимущества</a
+              >
+            </li>
+            <li>
+              <a
+                href="#products"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Продукция</a
+              >
+            </li>
+            <li>
+              <a
+                href="#materials"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Материалы</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >О производстве</a
+              >
+            </li>
+            <li>
+              <a
+                href="#portfolio"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Портфолио</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="nav-link block py-2 text-gray-700 hover:text-primary"
+                >Контакты</a
               >
             </li>
           </ul>
 
           <!-- Контакты в мобильном меню -->
-          <div class="mobile-menu-contacts">
-            <div class="mobile-contact-item">
-              <i class="fas fa-map-marker-alt"></i>
+          <div class="mt-8 pt-6 border-t border-gray-200 space-y-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-primary text-xl"></i>
               <div>
-                <p>Мордовия</p>
-                <span>Собственное производство</span>
+                <p class="font-semibold">Мордовия</p>
+                <span class="text-sm text-gray-500"
+                  >Собственное производство</span
+                >
               </div>
             </div>
-            <div class="mobile-contact-item">
-              <i class="fas fa-phone"></i>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-phone text-primary text-xl"></i>
               <div>
-                <a href="tel:+79176961300">8 (917) 696-13-00</a>
-                <a href="tel:+79271762232">8 (927) 176-22-32</a>
-                <span>Звоните прямо сейчас!</span>
+                <a href="tel:+79176961300" class="block font-semibold"
+                  >8 (917) 696-13-00</a
+                >
+                <a href="tel:+79271762232" class="block font-semibold"
+                  >8 (927) 176-22-32</a
+                >
+                <span class="text-sm text-gray-500">Звоните прямо сейчас!</span>
               </div>
             </div>
-            <div class="mobile-contact-item">
-              <i class="fas fa-clock"></i>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-clock text-primary text-xl"></i>
               <div>
-                <p>Пн-Пт: 8:00-17:00</p>
-                <span>Сб: 9:00-14:00</span>
+                <p class="font-semibold">Пн-Пт: 8:00-17:00</p>
+                <span class="text-sm text-gray-500">Сб: 9:00-14:00</span>
               </div>
             </div>
-            <!-- <button class="btn btn-primary btn-block mobile-callback">
-              <i class="fas fa-envelope"></i> Запросить прайс
-            </button> -->
           </div>
-        </nav>
+        </div>
       </div>
     </header>
 
     <!-- Герой-секция -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Производство эконом и премиум класса интерьерных отделочных
-            материалов из натуральной древесины (её компонентов) и гипсокартона
-          </h1>
-          <p class="hero-subtitle">
-            Мы специализируемся на производстве щитов (панелей) на основе
-            березовой фанеры, влагостойких плит OSB, плит МДФ а также
-            гипсокартона, ламинированных специальной пленкой ПВХ и шпонированных
-            натуральным древесным шпоном и каменным шпоном
-          </p>
-          <!-- <div class="hero-buttons">
-            <a href="#catalog" class="btn btn-large btn-primary">
-              <i class="fas fa-download"></i> Скачать каталог
-            </a>
-            <a href="#contact" class="btn btn-large btn-outline">
-              <i class="fas fa-calculator"></i> Рассчитать стоимость
-            </a>
-          </div> -->
-        </div>
-
-        <div class="hero-image">
-          <img
-            src="/img/back.jpeg"
-            alt="Мебельный щит из натурального дерева"
-          />
+    <section class="hero py-12 md:py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1 text-center lg:text-left">
+            <h1
+              class="text-2xl md:text-4xl font-bold text-gray-800 font-playfair mb-6"
+            >
+              Производство эконом и премиум класса интерьерных отделочных
+              материалов из натуральной древесины (её компонентов) и
+              гипсокартона
+            </h1>
+            <p class="text-gray-600 text-lg mb-8">
+              Мы специализируемся на производстве щитов (панелей) на основе
+              березовой фанеры, влагостойких плит OSB, плит МДФ а также
+              гипсокартона, ламинированных специальной пленкой ПВХ и
+              шпонированных натуральным древесным шпоном и каменным шпоном
+            </p>
+          </div>
+          <div class="flex-1">
+            <img
+              src="/img/back.jpeg"
+              alt="Мебельный щит из натурального дерева"
+              class="rounded-2xl shadow-xl w-full object-cover max-h-[400px]"
+            />
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Преимущества -->
-    <section class="advantages" id="advantages">
-      <div class="container">
-        <h2 class="section-title">Наши преимущества</h2>
+    <section class="advantages py-16 md:py-24" id="advantages">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 font-playfair"
+        >
+          Наши преимущества
+        </h2>
 
-        <div class="advantages-grid">
-          <div class="advantage-card">
-            <div class="advantage-icon">
-              <i class="fas fa-microscope"></i>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <div
+            class="advantage-card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group"
+          >
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary transition-colors duration-300"
+            >
+              <i class="fas fa-microscope text-3xl text-primary group-hover:text-white transition-colors duration-300"></i>
             </div>
-            <h3>Уникальные технологии</h3>
-            <p>
+            <h3 class="text-xl font-semibold mb-3">Уникальные технологии</h3>
+            <p class="text-gray-600">
               Прочность и устойчивость готового продукта к деформации при
               изменении влажности и температуры в помещении
             </p>
           </div>
 
-          <div class="advantage-card">
-            <div class="advantage-icon">
-              <i class="fas fa-shield-alt"></i>
+          <div
+            class="advantage-card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group"
+          >
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary transition-colors duration-300"
+            >
+              <i class="fas fa-shield-alt text-3xl text-primary group-hover:text-white transition-colors duration-300"></i>
             </div>
-            <h3>Безопасность</h3>
-            <p>
+            <h3 class="text-xl font-semibold mb-3">Безопасность</h3>
+            <p class="text-gray-600">
               Применяемые материалы соответствуют мировым требованиям и
               стандартам качества. Экологически чистые компоненты
             </p>
           </div>
 
-          <div class="advantage-card">
-            <div class="advantage-icon">
-              <i class="fas fa-industry"></i>
+          <div
+            class="advantage-card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group"
+          >
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary transition-colors duration-300"
+            >
+              <i class="fas fa-industry text-3xl text-primary group-hover:text-white transition-colors duration-300"></i>
             </div>
-            <h3>Собственное производство</h3>
-            <p>
+            <h3 class="text-xl font-semibold mb-3">Собственное производство</h3>
+            <p class="text-gray-600">
               Прямые поставки по привлекательным ценам без посредников. Контроль
               качества на каждом этапе
             </p>
           </div>
 
-          <div class="advantage-card">
-            <div class="advantage-icon">
-              <i class="fas fa-handshake"></i>
+          <div
+            class="advantage-card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-center group"
+          >
+            <div
+              class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary transition-colors duration-300"
+            >
+              <i class="fas fa-handshake text-3xl text-primary group-hover:text-white transition-colors duration-300"></i>
             </div>
-            <h3>Доверие покупателей</h3>
-            <p>К нам возвращаются снова и рекомендуют партнерам и друзьям.</p>
+            <h3 class="text-xl font-semibold mb-3">Доверие покупателей</h3>
+            <p class="text-gray-600">
+              К нам возвращаются снова и рекомендуют партнерам и друзьям.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Продукция -->
-    <section class="products" id="products">
-      <div class="container">
-        <h2 class="section-title">Наша продукция</h2>
-        <p class="section-subtitle">
-          Мебельные щиты из натуральной древисины (её компонентов) и
+    <section class="products py-16 md:py-24 bg-gray-50" id="products">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 font-playfair"
+        >
+          Наша продукция
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Мебельные щиты из натуральной древесины (её компонентов) и
           гипсокартона
         </p>
 
-        <div class="product-description">
-          <div class="product-text">
+        <div class="flex flex-col lg:flex-row gap-12 mb-16">
+          <div class="flex-1 space-y-4">
             <p>
               Предлагаем вашему вниманию эконом и премиум класса интерьерные
-              отделочные материалы (шпонированные, ламенированные стеновые
+              отделочные материалы (шпонированные, ламинированные стеновые
               панели) из натуральной древесины (дуб, ясень, береза, сосна) и
               гипсокартона, изготовленные на профессиональном оборудовании.
             </p>
@@ -244,51 +458,57 @@
               "полуфабрикат", который применяется в производстве:
             </p>
 
-            <ul class="product-uses">
-              <li>
-                <i class="fas fa-check"></i> Стеновых панелей для отделки
-                помещений (для выравнивания стен, создания декоративных
-                элементов, зонирования пространства)
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>Стеновых панелей для отделки помещений (для выравнивания стен, создания декоративных элементов, зонирования пространства)</span>
               </li>
-              <li>
-                <i class="fas fa-check"></i> Элементов лестниц (ступеней,
-                порогов)
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>Элементов лестниц (ступеней, порогов)</span>
               </li>
-              <li>
-                <i class="fas fa-check"></i> Столешниц для обеденных и
-                письменных столов
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>Столешниц для обеденных и письменных столов</span>
               </li>
-              <li>
-                <i class="fas fa-check"></i> Паркетной доски и напольных
-                покрытий
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>Паркетной доски и напольных покрытий</span>
               </li>
-              <li>
-                <i class="fas fa-check"></i> Мебельных фасадов и элементов
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>Мебельных фасадов и элементов</span>
               </li>
             </ul>
           </div>
 
-          <div class="product-image">
-            <img src="/img/bl4.jpg" alt="Мебельный щит из дуба" />
+          <div class="flex-1">
+            <img
+              src="/img/bl4.jpg"
+              alt="Мебельный щит из дуба"
+              class="rounded-2xl shadow-lg w-full object-cover"
+            />
           </div>
         </div>
 
-        <div class="benefits">
-          <h3>Преимущества мебельного щита перед цельным массивом</h3>
-          <div class="benefits-grid">
-            <div class="benefit">
-              <i class="fas fa-check-circle"></i>
+        <div class="bg-white rounded-2xl p-8 shadow-md">
+          <h3 class="text-2xl font-semibold mb-6 text-center">
+            Преимущества мебельного щита перед цельным массивом
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-check-circle text-primary text-2xl"></i>
               <p>Не коробится и не трескается</p>
             </div>
-            <div class="benefit">
-              <i class="fas fa-check-circle"></i>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-check-circle text-primary text-2xl"></i>
               <p>
                 Гарантированная стабильность при перепадах температуры и
                 влажности
               </p>
             </div>
-            <div class="benefit">
-              <i class="fas fa-check-circle"></i>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-check-circle text-primary text-2xl"></i>
               <p>
                 Экономия без потери качества - преимущества цельного массива по
                 выгодной цене
@@ -300,68 +520,50 @@
     </section>
 
     <!-- Технические характеристики -->
-    <section class="specs" id="materials">
-      <div class="container">
-        <h2 class="section-title">Технические характеристики</h2>
+    <section class="specs py-16 md:py-24" id="materials">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 font-playfair"
+        >
+          Технические характеристики
+        </h2>
 
-        <div class="specs-content">
-          <div class="specs-card">
-            <h3><i class="fas fa-tree"></i> Используемые материалы</h3>
-            <ul class="specs-list">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+              <i class="fas fa-tree text-primary"></i> Используемые материалы
+            </h3>
+            <ul class="space-y-2 text-gray-600">
               <li><strong>Породы дерева:</strong> дуб, ясень, береза, сосна</li>
-              <li>
-                <strong>Натуральная ламель:</strong> уральская, толщина 3-4 мм,
-                длина до 3 м
-              </li>
-              <li>
-                <strong>Влагостойкая плита OSB:</strong> спресованный материал,
-                состоящий из несокльих слоев удлиненной щепы хвойных пород
-                деревьев
-              </li>
-              <li>
-                <strong>Плита МДФ:</strong> мелкодисперсная древесно-волокнистая
-                плита средней плотности
-              </li>
-              <li>
-                <strong>Гипсокартон (ГКЛ):</strong> листовой строительный
-                материал в основу которого входит гипс (природный материал),
-                обклеенный плотной картонной обложкой
-              </li>
-              <li>
-                <strong>Натуральный древесный шпон:</strong> включая fine line
-              </li>
-              <li>
-                <strong>Декоративный алюминиевый монтажный профиль:</strong>
-                используется для соединения ппанелей между собой
-              </li>
-              <li>
-                <strong>Клей:</strong> высокопрочный экологически безопасный
-                импортного производства
-              </li>
+              <li><strong>Натуральная ламель:</strong> уральская, толщина 3-4 мм, длина до 3 м</li>
+              <li><strong>Влагостойкая плита OSB:</strong> спрессованный материал, состоящий из нескольких слоев удлиненной щепы хвойных пород деревьев</li>
+              <li><strong>Плита МДФ:</strong> мелкодисперсная древесно-волокнистая плита средней плотности</li>
+              <li><strong>Гипсокартон (ГКЛ):</strong> листовой строительный материал в основу которого входит гипс (природный материал), обклеенный плотной картонной обложкой</li>
+              <li><strong>Натуральный древесный шпон:</strong> включая fine line</li>
+              <li><strong>Декоративный алюминиевый монтажный профиль:</strong> используется для соединения панелей между собой</li>
+              <li><strong>Клей:</strong> высокопрочный экологически безопасный импортного производства</li>
               <li><strong>Влажность:</strong> 6% - 8%</li>
-              <li>
-                <strong>Готовность:</strong> к финишному покрытию лаком, воском,
-                маслом
-              </li>
+              <li><strong>Готовность:</strong> к финишному покрытию лаком, воском, маслом</li>
             </ul>
           </div>
 
-          <div class="specs-card">
-            <h3><i class="fas fa-ruler-combined"></i> Диапазон размеров</h3>
-            <ul class="specs-list">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+              <i class="fas fa-ruler-combined text-primary"></i> Диапазон размеров
+            </h3>
+            <ul class="space-y-2 text-gray-600">
               <li><strong>Толщина:</strong> от 4 мм до 40 мм</li>
               <li><strong>Ширина:</strong> от 100 мм до 1000 мм</li>
               <li><strong>Длина:</strong> от 1000 мм до 3000 мм</li>
-              <li>
-                <strong>Цветовая гамма:</strong> натуральные цвета древесины
-                (возможно покрытие маслом)
-              </li>
+              <li><strong>Цветовая гамма:</strong> натуральные цвета древесины (возможно покрытие маслом)</li>
             </ul>
           </div>
 
-          <div class="specs-card">
-            <h3><i class="fas fa-award"></i> Качество продукции</h3>
-            <ul class="specs-list">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+              <i class="fas fa-award text-primary"></i> Качество продукции
+            </h3>
+            <ul class="space-y-2 text-gray-600">
               <li>Используется только отборное сырье</li>
               <li>Безупречное качество склейки</li>
               <li>Идеальная шлифовка поверхности</li>
@@ -374,196 +576,283 @@
     </section>
 
     <!-- Галерея -->
-    <section class="gallery" id="portfolio">
-      <div class="container">
-        <h2 class="section-title">Образцы нашей продукции</h2>
+    <section class="gallery py-16 md:py-24 bg-gray-50" id="portfolio">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 font-playfair"
+        >
+          Образцы нашей продукции
+        </h2>
 
-        <div class="gallery-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="gallery-item">
-            <div class="gallery-image">
-              <img src="/img/bl1.jpg" alt="Мебельный щит из дуба" />
-              <div class="gallery-overlay">
-                <a href="#" class="gallery-btn">Увеличить</a>
+            <div class="gallery-image relative overflow-hidden rounded-xl group">
+              <img
+                src="/img/bl1.jpg"
+                alt="Мебельный щит из дуба"
+                class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div
+                class="gallery-overlay absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 transition-opacity duration-300"
+              >
+                <a
+                  href="/img/bl1.jpg"
+                  target="_blank"
+                  class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                  >Увеличить</a
+                >
               </div>
             </div>
-            <p class="gallery-caption">Дуб натуральный</p>
+            <p class="text-center mt-3 font-medium">Дуб натуральный</p>
           </div>
 
           <div class="gallery-item">
-            <div class="gallery-image">
-              <img src="/img/bl2.jpg" alt="Мебельный щит из ясеня" />
-              <div class="gallery-overlay">
-                <a href="#" class="gallery-btn">Увеличить</a>
+            <div class="gallery-image relative overflow-hidden rounded-xl group">
+              <img
+                src="/img/bl2.jpg"
+                alt="Мебельный щит из ясеня"
+                class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div
+                class="gallery-overlay absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 transition-opacity duration-300"
+              >
+                <a
+                  href="/img/bl2.jpg"
+                  target="_blank"
+                  class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                  >Увеличить</a
+                >
               </div>
             </div>
-            <p class="gallery-caption">Ясень светлый</p>
+            <p class="text-center mt-3 font-medium">Ясень светлый</p>
           </div>
 
           <div class="gallery-item">
-            <div class="gallery-image">
-              <img src="/img/bl3.jpg" alt="Мебельный щит темный" />
-              <div class="gallery-overlay">
-                <a href="#" class="gallery-btn">Увеличить</a>
+            <div class="gallery-image relative overflow-hidden rounded-xl group">
+              <img
+                src="/img/bl3.jpg"
+                alt="Мебельный щит темный"
+                class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div
+                class="gallery-overlay absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 transition-opacity duration-300"
+              >
+                <a
+                  href="/img/bl3.jpg"
+                  target="_blank"
+                  class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                  >Увеличить</a
+                >
               </div>
             </div>
-            <p class="gallery-caption">Дуб мореный</p>
+            <p class="text-center mt-3 font-medium">Дуб мореный</p>
           </div>
 
-          <div class="gallery-item portfolio-link">
-            <div class="portfolio-card">
-              <i class="fas fa-images"></i>
-              <h3>Смотреть другие работы</h3>
-              <a href="#" class="btn btn-secondary">Перейти в портфолио</a>
+          <div class="gallery-item">
+            <div
+              class="bg-white rounded-xl p-8 text-center h-full flex flex-col items-center justify-center shadow-md"
+            >
+              <i class="fas fa-images text-5xl text-primary mb-4"></i>
+              <h3 class="text-xl font-semibold mb-4">Смотреть другие работы</h3>
+              <a
+                href="#"
+                class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors inline-block"
+                >Перейти в портфолио</a
+              >
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- О компании -->
-    <!-- <section class="about" id="about">
-      <div class="container">
-        <h2 class="section-title">ООО "АрТик-С"</h2>
-
-        <div class="about-content">
-          <div class="about-text">
-            <h3>
-              Производство премиальных и бюджетных интерьерных материалов из
-              натурального дерева
-            </h3>
-            <p>
-              Мы специализируемся на производстве высококачественных мебельных
-              щитов из натурального дерева в Мордовии. Наше производство
-              оснащено современным оборудованием, что позволяет нам создавать
-              продукцию премиум-класса.
-            </p>
-          </div>
-
-          <div class="about-image">
-            <img src="/img/bl5.jpg" alt="Производство мебельных щитов" />
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <!-- Контакты -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-wrapper">
-          <div class="contact-info">
-            <h2 class="section-title">Контакты</h2>
+    <section class="contact py-16 md:py-24" id="contact">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h2
+              class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 font-playfair"
+            >
+              Контакты
+            </h2>
 
-            <div class="contact-details">
-              <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <i class="fas fa-map-marker-alt text-primary text-2xl mt-1"></i>
                 <div>
-                  <h4>Производство</h4>
-                  <p>
+                  <h4 class="font-semibold text-lg">Производство</h4>
+                  <p class="text-gray-600">
                     Респ. Мордовия, Атяшевский район, с. Алашеевка, ул. Новая 4а
                   </p>
-                  <p>Собственное производство</p>
+                  <p class="text-gray-600">Собственное производство</p>
                 </div>
               </div>
 
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
+              <div class="flex items-start gap-4">
+                <i class="fas fa-phone text-primary text-2xl mt-1"></i>
                 <div>
-                  <h4>Телефоны</h4>
-                  <p>8 (917) 696-13-00</p>
-                  <p>8 (927) 176-22-32</p>
+                  <h4 class="font-semibold text-lg">Телефоны</h4>
+                  <p class="text-gray-600">8 (917) 696-13-00</p>
+                  <p class="text-gray-600">8 (927) 176-22-32</p>
                 </div>
               </div>
 
-              <div class="contact-item">
-                <i class="fas fa-envelope"></i>
+              <div class="flex items-start gap-4">
+                <i class="fas fa-envelope text-primary text-2xl mt-1"></i>
                 <div>
-                  <h4>Email</h4>
-                  <p>info@victoria-wood.ru</p>
-                  <p>sales@victoria-wood.ru</p>
+                  <h4 class="font-semibold text-lg">Email</h4>
+                  <p class="text-gray-600">info@victoria-wood.ru</p>
+                  <p class="text-gray-600">sales@victoria-wood.ru</p>
                 </div>
               </div>
 
-              <div class="contact-item">
-                <i class="fas fa-clock"></i>
+              <div class="flex items-start gap-4">
+                <i class="fas fa-clock text-primary text-2xl mt-1"></i>
                 <div>
-                  <h4>Режим работы</h4>
-                  <p>Пн-Пт: 8:00-17:00</p>
-                  <p>Сб: 9:00-14:00</p>
-                  <p>Вс: выходной</p>
+                  <h4 class="font-semibold text-lg">Режим работы</h4>
+                  <p class="text-gray-600">Пн-Пт: 8:00-17:00</p>
+                  <p class="text-gray-600">Сб: 9:00-14:00</p>
+                  <p class="text-gray-600">Вс: выходной</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- <div class="contact-form">
-            <h3>Запросить коммерческое предложение</h3>
-            <p>Мы подготовим расчет стоимости в течение 2 часов</p>
-
-            <form id="requestForm">
-              <div class="form-group">
-                <input type="text" placeholder="Ваше имя" required />
-              </div>
-
-              <div class="form-group">
-                <input type="tel" placeholder="Ваш телефон" required />
-              </div>
-
-              <div class="form-group">
-                <input type="email" placeholder="Ваш email" required />
-              </div>
-
-              <div class="form-group">
-                <textarea
-                  placeholder="Ваш вопрос или комментарий"
-                  rows="3"
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block">
-                <i class="fas fa-paper-plane"></i> Отправить запрос
-              </button>
-            </form>
-          </div> -->
         </div>
       </div>
     </section>
 
     <!-- Футер -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <div class="logo-icon">
+    <footer class="footer bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
               <img
                 src="./img/AT-white-logo.png"
-                class="logo-img"
+                class="w-10 h-10 object-contain"
                 alt="АрТик-С"
               />
             </div>
-            <div class="footer-logo-text">
-              <h3>ООО "АрТик-С"</h3>
-              <p>
+            <div>
+              <h3 class="text-xl font-bold font-playfair">ООО "АрТик-С"</h3>
+              <p class="text-sm text-gray-400 max-w-md">
                 Производство эконом и премиум класса интерьерных отделочных
-                материалов из натуральной древесины (её
-                компонентов) и гипсокартона
-              </p>
+                материалов из натуральной древесины (её компонентов) и
+                гипсокартона
               </p>
             </div>
           </div>
 
-          <div class="footer-copyright">
+          <div class="text-center text-gray-400 text-sm">
             <p>&copy; 2026 ООО "АрТик-С". Все права защищены.</p>
             <p>Доставка по всей России.</p>
           </div>
 
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-vk"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-vk"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-telegram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-whatsapp"></i>
+            </a>
           </div>
         </div>
       </div>
     </footer>
-    <script type="module" src="scripts/script.js"></script>
+
+    <script type="module">
+      // Мобильное меню и скролл логика
+      const header = document.getElementById("header");
+      const menuToggle = document.getElementById("menuToggle");
+      const navbar = document.getElementById("navbar");
+      const overlay = document.getElementById("overlay");
+      const scrollBtn = document.getElementById("scrollTopBtn");
+
+      // Функция для закрытия меню
+      function closeMenu() {
+        navbar.classList.remove("active");
+        menuToggle.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Функция для открытия меню
+      function openMenu() {
+        navbar.classList.add("active");
+        menuToggle.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Обработчик клика по бургеру
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (navbar.classList.contains("active")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Закрытие по клику на оверлей
+      overlay.addEventListener("click", closeMenu);
+
+      // Закрытие при клике на ссылку
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      // Скролл топ
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+          scrollBtn.classList.remove("opacity-0", "invisible");
+          scrollBtn.classList.add("opacity-100", "visible");
+        } else {
+          scrollBtn.classList.remove("opacity-100", "visible");
+          scrollBtn.classList.add("opacity-0", "invisible");
+        }
+
+        // Смена фона шапки
+        if (window.scrollY > 100) {
+          header.classList.add("shadow-lg");
+        } else {
+          header.classList.remove("shadow-lg");
+        }
+      });
+
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Активная ссылка в меню
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      function setActiveLink() {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("text-primary", "border-b-2", "border-primary");
+          link.classList.add("text-gray-700");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.remove("text-gray-700");
+            link.classList.add("text-primary", "border-b-2", "border-primary");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", setActiveLink);
+      setActiveLink();
+    </script>
   </body>
 </html>
